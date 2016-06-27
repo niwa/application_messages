@@ -2,6 +2,6 @@
   "name": "niwa_application_messages",
   "version": "0.0.1",
   "devDependencies": {
+    "uglify": "^0.1.5"
   }
-
 }
