@@ -12,9 +12,7 @@
     "requirejs-text": "2.0.x",
     "requirejs": "2.1.x",
     "bootstrap": "^3.3.6",
-    "angular-sanitize": "^1.5.5"
-  },
-  "devDependencies": {
+    "angular-sanitize": "^1.5.5",
     "bootstrap": "^3.3.6"
   }
 }

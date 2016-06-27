@@ -1,7 +1,7 @@
 'use strict';
 define([
     'angular',
-    'application_messages/am.service',
+    'am.service',
 ], function (angular) {
     return angular.module('am.controller', ['am.service'])
         

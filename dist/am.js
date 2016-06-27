@@ -1,8 +1,8 @@
 'use strict';
 define([
     'angular',
-    'application_messages/am.service',
-    'application_messages/am.directive',
+    'am.service',
+    'am.directive',
 
 ], function (angular) {
     return angular.module('application.messages', [

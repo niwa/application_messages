@@ -1,6 +1,5 @@
 define([
-    'angular',
-    'moment',
+    'angular'
 
 ], function (angular) {
 

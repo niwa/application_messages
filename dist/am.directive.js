@@ -1,7 +1,7 @@
 'use strict';
 define([
         'angular',
-        'application_messages/am.controller'
+        'am.controller'
 
     ], function (angular) {
         return angular.module('am.directive', ['am.controller'
