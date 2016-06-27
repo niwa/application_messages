@@ -1,15 +1,20 @@
 # NIWA Application Messages
 
-This  module allows to show NIWA application messages in an Angular project. It is written in requirejs style (AMD).
+This  module shows NIWA application messages in an Angular project.
 
-If your project is an Angular + Requirejs you can install this module by simply installing it with:
-
+###To install in a project use bower:
+```
 bower install https://github.com/niwa/application_messages.git
+```
 
-To use this module you will need to set up a proxy pass rule in your Apache vhost file. It looks like this:
 
+###To use this module 
+You need to set up a proxy pass rule in your Apache vhost file. It looks like this:
+```
 ProxyPass /status/message http://applicationmessages.niwa.co.nz/status/{projectName}
+```
 
+```
 <Proxy *>
 
 Order allow,deny
@@ -17,10 +22,14 @@ Order allow,deny
 Allow from all
 
 </Proxy>
+```
 
+### To set up your project in *NIWA Application Status Messages*
 
-Whereby projectName is the name of your project set up here:
+The paramater **projectName** is the name of your project set up here:
 [applicationmessages.niwa.co.nz](applicationmessages.niwa.co.nz)
+
+
 
 
 
