@@ -7,6 +7,8 @@ angular.module('am.controller', ['am.service'])
             var vm = this;
             amService.get().then(function (msg) {
                 vm.app_message = msg;
+            },function (reason) {
+                vm.app_message = reason;
             })
         }
     ]);

@@ -5,49 +5,70 @@ angular.module('am.service', [])
             get: function () {
                 var deferred = $q.defer();
                 $http.get('/status/message').then(function (response) {
+                        if (response.status == 200) {
+                            if (window.DOMParser) {
+                                parser = new DOMParser();
+                                xmlDoc = parser.parseFromString(response.data, "text/xml");
+                            }
+                            else // Internet Explorer
+                            {
+                                xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
+                                xmlDoc.async = false;
+                                xmlDoc.loadXML(response.data);
+                            }
+                            appMessageContainer = xmlDoc.getElementsByTagName("app_message");
+                            var status = '';
+                            var appstatus = appMessageContainer[0].getAttribute('status');
+                            switch (appstatus) {
 
-                    if (window.DOMParser) {
-                        parser = new DOMParser();
-                        xmlDoc = parser.parseFromString(response.data, "text/xml");
-                    }
-                    else // Internet Explorer
-                    {
-                        xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
-                        xmlDoc.async = false;
-                        xmlDoc.loadXML(response.data);
-                    }
-                    appMessageContainer = xmlDoc.getElementsByTagName("app_message");
-                    var status = '';
-                    var appstatus = appMessageContainer[0].getAttribute('status');
-                    switch (appstatus) {
+                                case 'ok':
+                                    status = 'ok';
+                                    break;
+                                case 'message':
+                                    status = 'info';
+                                    break;
+                                case 'maintenance':
+                                    status = 'warning';
+                                    break;
+                                case 'application_error':
+                                    status = 'danger';
+                                    break;
+                                default:
+                                    status = appstatus;
+                                    break;
+                            }
+                            var appMessage = '';
+                            if (status != "ok") {
+                                appMessage = appMessageContainer[0].getElementsByTagName("status_text")[0].childNodes[0].nodeValue;
+                            }
+                            deferred.resolve(
+                                {
+                                    msg: appMessage,
+                                    status: status
+                                }
+                            );
+                        } else {
+                            deferred.reject(
+                                {
 
-                        case 'ok':
-                            status = 'ok';
-                            break;
-                        case 'message':
-                            status = 'info';
-                            break;
-                        case 'maintenance':
-                            status = 'warning';
-                            break;
-                        case 'application_error':
-                            status = 'danger';
-                            break;
-                        default:
-                            status = appstatus;
-                            break;
-                    }
-                    var appMessage = '';
-                    if (status != "ok") {
-                        appMessage = appMessageContainer[0].getElementsByTagName("status_text")[0].childNodes[0].nodeValue;
-                    }
-                    deferred.resolve(
-                        {
-                            msg: appMessage,
-                            status: status
+                                    msg: 'Application Messages server not reachable',
+                                    status: response.status
+
+                                }
+                            )
                         }
-                    );
-                });
+                    },function (reason) {
+                        deferred.reject(
+                            {
+
+                                msg: 'Application Messages server not reachable',
+                                status: reason.status
+
+                            }
+                        )
+
+                }
+                );
                 return deferred.promise;
             }
         }
