@@ -1,7 +1,7 @@
 {
   "name": "application_messages",
   "description": "This module allows to show NIWA application messages in an Angular project",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "homepage": "https://github.com/niwa/application_messages.git",
   "private": true,
   "dependencies": {
