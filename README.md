@@ -38,17 +38,10 @@ First run
 npm install 
 ```
 
-and afterwards
-
-```
-./node_modules/bower/bin/bower install
-
-```
-
 
 Apply your changes to the source files and recompile the minified version:
 
 ```
-uglifyjs am.controller.js am.directive.js  am.js am.service.js -o ../build/am.min.js
+npm run build
 
 ```
