@@ -1,0 +1,31 @@
+{
+  "name": "niwa_application_messages",
+  "version": "2.0.0",
+  "description": "Tool to display messages regarding the status of an online application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepublish": "tsc",
+    "prebuild": "npm install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/niwa/application_messages.git"
+  },
+  "author": "NIWA",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/niwa/application_messages/issues"
+  },
+  "homepage": "https://github.com/niwa/application_messages#readme",
+  "dependencies": {
+    "@angular/core": "2.*",
+    "rxjs": "*",
+    "zone.js": "*"
+  },
+  "devDependencies": {
+    "typescript": "^2.1.5",
+    "typings": "2.*"
+  },
+  "typings": "./application_messages.d.ts"
+}
