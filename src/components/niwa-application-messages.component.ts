@@ -7,6 +7,6 @@ import { Message } from './message';
             {{message}}
 </div>`
 })
-export class ApplicationMessagesComponent {
+export class NiwaApplicationMessagesComponent {
     message = new Message ('maintenance',"This system will be undergoing maintenance soon");
 }
