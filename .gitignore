@@ -9,3 +9,6 @@ Thumbs.db
 *.map
 *.d.ts
 .idea
+.idea/*
+app/app.component.js
+*.log

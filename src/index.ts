@@ -1,3 +1,7 @@
+import {NiwaApplicationMessagesModule} from './niwa-application-messages.module';
+import {NiwaApplicationMessagesComponent} from './niwa-application-messages.component';
 
-export * from './niwa-application-messages.module'
-export * from './components/niwa-application-messages.component'
+export {
+    NiwaApplicationMessagesModule,
+    NiwaApplicationMessagesComponent
+}
