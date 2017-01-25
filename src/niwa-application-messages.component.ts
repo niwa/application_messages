@@ -6,13 +6,10 @@ import {NiwaApplicationMessagesService} from './niwa-application-messages.servic
     selector: 'niwa-application-messages',
     providers: [NiwaApplicationMessagesService],
     template: `
-<div *ngIf="message" class="{{message.status}}">
-   
-</div>
-<div class="col-md-12">
+<div class="col-md-12" *ngIf="showMessage()">
     <div class="panel">
         <div class="panel-heading bg-{{message.cssClass}}">
-            <span class="glyphicon glyphicon-wrench"> </span>
+            <span class="glyphicon glyphicon{{message.icon}}"> </span>
             {{message.text}}
         </div>
     </div>
@@ -41,6 +38,11 @@ export class NiwaApplicationMessagesComponent {
             }
         )
     }
+
+    showMessage(){
+        return (this.message !== null && this.message.status != 'ok')
+    }
+    
 
 
 }
