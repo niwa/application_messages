@@ -1,14 +1,14 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { Validators, FormGroup, FormArray, FormBuilder } from '@angular/forms';
 
-declare var moment: any;
-moment['locale']('en-ca'); //e.g. fr-ca
 
 
 
 @Component({
   selector: 'my-app',
-  template: `<niwa-application-messages></niwa-application-messages>`,
+  template: `
+main app<niwa-application-messages [appName]="'OSD_TEST'"></niwa-application-messages>
+`,
   encapsulation: ViewEncapsulation.None,
   styles: [`
     ng2-utils-1 .ng2-datetime-picker-wrapper { display: inline-block }
