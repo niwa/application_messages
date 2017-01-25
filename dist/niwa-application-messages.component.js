@@ -1,18 +1,32 @@
 "use strict";
 var core_1 = require('@angular/core');
 var message_1 = require('./message');
+var niwa_application_messages_service_1 = require('./niwa-application-messages.service');
 var NiwaApplicationMessagesComponent = (function () {
-    function NiwaApplicationMessagesComponent() {
-        this.message = new message_1.Message('maintenance', "This system will be undergoing maintenance soon");
+    function NiwaApplicationMessagesComponent(appMessagesService) {
+        this.appMessagesService = appMessagesService;
+        this.message = new message_1.Message('ok', "");
     }
+    NiwaApplicationMessagesComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.appMessagesService.getMessage().subscribe(function (message) {
+            _this.message = message;
+        }, function (error) {
+            _this.error = error;
+            console.log(_this.error);
+        });
+    };
     NiwaApplicationMessagesComponent.decorators = [
         { type: core_1.Component, args: [{
                     selector: 'niwa-application-messages',
-                    template: "<div *ngIf=\"message\" class=\"{{message.status}}\">\n            {{message.text}}\n</div>"
+                    providers: [niwa_application_messages_service_1.NiwaApplicationMessagesService],
+                    template: "\n<div *ngIf=\"message\" class=\"{{message.status}}\">\n   \n</div>\n<div class=\"col-md-12\">\n    <div class=\"panel\">\n        <div class=\"panel-heading bg-{{message.cssClass}}\">\n            <span class=\"glyphicon glyphicon-wrench\"> </span>\n            {{message.text}}\n        </div>\n    </div>\n</div>\n\n"
                 },] },
     ];
     /** @nocollapse */
-    NiwaApplicationMessagesComponent.ctorParameters = [];
+    NiwaApplicationMessagesComponent.ctorParameters = [
+        { type: niwa_application_messages_service_1.NiwaApplicationMessagesService, },
+    ];
     return NiwaApplicationMessagesComponent;
 }());
 exports.NiwaApplicationMessagesComponent = NiwaApplicationMessagesComponent;
