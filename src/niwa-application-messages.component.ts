@@ -1,10 +1,11 @@
-import { Component, Input } from '@angular/core';
-import { Message } from './message';
+import {Component} from '@angular/core';
+import {Message} from './message';
+import {NiwaApplicationMessagesService} from './niwa-application-messages.service';
 
 @Component({
     selector: 'niwa-application-messages',
+    providers: [NiwaApplicationMessagesService],
     template: `
-<div>This is {{appName}}.</div>
 <div *ngIf="message" class="{{message.status}}">
    
 </div>
@@ -20,7 +21,26 @@ import { Message } from './message';
 `
 })
 export class NiwaApplicationMessagesComponent {
-    @Input() appName = "x";
-    message = new Message ('ok',"This system will be undergoing maintenance soon . Y");
-    
+
+
+    message = new Message('ok', "");
+    error:any;
+
+    constructor(private appMessagesService:NiwaApplicationMessagesService) {
+    }
+
+    ngOnInit() {
+
+        this.appMessagesService.getMessage().subscribe(
+            (message:Message)=> {
+                this.message = message;
+            },
+            error => {
+                this.error = error;
+                console.log(this.error);
+            }
+        )
+    }
+
+
 }
