@@ -1,8 +1,8 @@
-import {Component, ViewEncapsulation} from '@angular/core';
+import {Component, ViewEncapsulation} from "@angular/core";
 
 
 @Component({
-    selector: 'my-app',
+    selector: "my-app",
     template: `<niwa-application-messages></niwa-application-messages>`,
     encapsulation: ViewEncapsulation.None
 })

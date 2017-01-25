@@ -1,9 +1,9 @@
-import {Component} from '@angular/core';
-import {Message} from './message';
-import {NiwaApplicationMessagesService} from './niwa-application-messages.service';
+import {Component} from "@angular/core";
+import {Message} from "./message";
+import {NiwaApplicationMessagesService} from "./niwa-application-messages.service";
 
 @Component({
-    selector: 'niwa-application-messages',
+    selector: "niwa-application-messages",
     providers: [NiwaApplicationMessagesService],
     template: `
 <div class="col-md-12" *ngIf="showMessage()">
@@ -20,29 +20,28 @@ import {NiwaApplicationMessagesService} from './niwa-application-messages.servic
 export class NiwaApplicationMessagesComponent {
 
 
-    message = new Message('ok', "");
-    error:any;
+    message = new Message("ok", "");
+    error: any;
 
-    constructor(private appMessagesService:NiwaApplicationMessagesService) {
+    constructor(private appMessagesService: NiwaApplicationMessagesService) {
     }
 
     ngOnInit() {
 
         this.appMessagesService.getMessage().subscribe(
-            (message:Message)=> {
+            (message: Message) => {
                 this.message = message;
             },
             error => {
                 this.error = error;
                 console.log(this.error);
             }
-        )
+        );
     }
 
-    showMessage(){
-        return (this.message !== null && this.message.status != 'ok')
+    showMessage() {
+        return (this.message !== null && this.message.status !== "ok");
     }
-    
 
 
 }
