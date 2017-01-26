@@ -155,11 +155,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	            console.log(_this.error);
 	        });
 	    };
+	    NiwaApplicationMessagesComponent.prototype.showMessage = function () {
+	        return (this.message !== null && this.message.status != 'ok');
+	    };
 	    NiwaApplicationMessagesComponent = __decorate([
 	        core_1.Component({
 	            selector: 'niwa-application-messages',
 	            providers: [niwa_application_messages_service_1.NiwaApplicationMessagesService],
-	            template: "\n<div *ngIf=\"message\" class=\"{{message.status}}\">\n   \n</div>\n<div class=\"col-md-12\">\n    <div class=\"panel\">\n        <div class=\"panel-heading bg-{{message.cssClass}}\">\n            <span class=\"glyphicon glyphicon-wrench\"> </span>\n            {{message.text}}\n        </div>\n    </div>\n</div>\n\n"
+	            template: "\n<div class=\"col-md-12\" *ngIf=\"showMessage()\">\n    <div class=\"panel\">\n        <div class=\"panel-heading bg-{{message.cssClass}}\">\n            <span class=\"glyphicon glyphicon{{message.icon}}\"> </span>\n            {{message.text}}\n        </div>\n    </div>\n</div>\n\n"
 	        }), 
 	        __metadata('design:paramtypes', [niwa_application_messages_service_1.NiwaApplicationMessagesService])
 	    ], NiwaApplicationMessagesComponent);
@@ -180,18 +183,23 @@ return /******/ (function(modules) { // webpackBootstrap
 	        switch (this.status) {
 	            case 'ok':
 	                this.cssClass = 'ok';
+	                this.icon = '-ok-sign';
 	                break;
 	            case 'message':
 	                this.cssClass = 'info';
+	                this.icon = '-info-sign';
 	                break;
 	            case 'maintenance':
 	                this.cssClass = 'warning';
+	                this.icon = '-wrench';
 	                break;
 	            case 'error':
 	                this.cssClass = 'danger';
+	                this.icon = '-warning-sign';
 	                break;
 	            default:
 	                this.cssClass = this.status;
+	                this.icon = '';
 	                break;
 	        }
 	    }

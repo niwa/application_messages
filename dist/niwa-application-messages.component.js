@@ -16,11 +16,14 @@ var NiwaApplicationMessagesComponent = (function () {
             console.log(_this.error);
         });
     };
+    NiwaApplicationMessagesComponent.prototype.showMessage = function () {
+        return (this.message !== null && this.message.status != 'ok');
+    };
     NiwaApplicationMessagesComponent.decorators = [
         { type: core_1.Component, args: [{
                     selector: 'niwa-application-messages',
                     providers: [niwa_application_messages_service_1.NiwaApplicationMessagesService],
-                    template: "\n<div *ngIf=\"message\" class=\"{{message.status}}\">\n   \n</div>\n<div class=\"col-md-12\">\n    <div class=\"panel\">\n        <div class=\"panel-heading bg-{{message.cssClass}}\">\n            <span class=\"glyphicon glyphicon-wrench\"> </span>\n            {{message.text}}\n        </div>\n    </div>\n</div>\n\n"
+                    template: "\n<div class=\"col-md-12\" *ngIf=\"showMessage()\">\n    <div class=\"panel\">\n        <div class=\"panel-heading bg-{{message.cssClass}}\">\n            <span class=\"glyphicon glyphicon{{message.icon}}\"> </span>\n            {{message.text}}\n        </div>\n    </div>\n</div>\n\n"
                 },] },
     ];
     /** @nocollapse */

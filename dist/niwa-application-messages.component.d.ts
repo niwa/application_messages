@@ -6,4 +6,5 @@ export declare class NiwaApplicationMessagesComponent {
     error: any;
     constructor(appMessagesService: NiwaApplicationMessagesService);
     ngOnInit(): void;
+    showMessage(): boolean;
 }
