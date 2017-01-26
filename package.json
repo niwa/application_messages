@@ -1,6 +1,6 @@
 {
   "name": "niwa-application-messages",
-  "version": "2.1.0",
+  "version": "2.0.7",
   "description": "Tool to display messages regarding the status of an online application",
   "main": "dist/niwa-application-messages.umd.js",
   "module": "dist/index.js",
