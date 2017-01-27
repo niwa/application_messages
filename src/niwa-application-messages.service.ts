@@ -9,7 +9,7 @@ export class NiwaApplicationMessagesService {
     private baseUrl: string;
 
     constructor(private http: Http) {
-        this.baseUrl = "http://localhost/status/message/FENZ";
+        this.baseUrl = "/status/message";
     }
 
     public getMessage(): Observable<any> {
