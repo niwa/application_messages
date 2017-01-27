@@ -9,3 +9,4 @@ Thumbs.db
 .idea/*
 app/app.component.js
 *.log
+coverage
